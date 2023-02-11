@@ -1,0 +1,238 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-align: center;
+	color: rgb(107, 105, 105);
+	font-family: Calibri;
+	font-size: 18px;
+	font-weight: 600;
+	transition: all 0.2s ease-in-out;
+}
+
+body {
+	background: url('./dogi.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.todo {
+	max-width: 1000px;
+	margin: 50px auto 0;
+	border: 3px solid #000;
+	padding: 15px 20px 10px;
+	border-radius: 20px;
+	background: rgb(221, 219, 219);
+}
+
+.todo__todo-header {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.button {
+	background: rgb(25, 233, 205);
+	border: 3px solid #000;
+	border-radius: 10px;
+}
+
+.button:hover {
+	background: rgb(100, 241, 136);
+	color: black;
+	cursor: pointer;
+}
+
+.button:active {
+	background: rgb(39, 199, 79);
+	transition: 0.1s;
+}
+
+.todo-header__btn {
+	width: 110px;
+	padding: 10px;
+}
+
+.btn--delete-all {
+	margin-right: 5px;
+}
+
+.todo-header__input-wrapper {
+	margin-left: 10px;
+	display: flex;
+	flex-grow: 1;
+}
+
+.input {
+	padding: 10px;
+	border: 3px solid #000;
+	border-radius: 10px;
+	outline: none;
+	text-align: left;
+}
+
+.input:focus {
+	border-color: orange;
+}
+
+.input::placeholder {
+	color: silver;
+	text-align: center;
+}
+
+.todo-header__input {
+	flex-grow: 1;
+	margin-right: 10px;
+}
+
+.todo__show-todo {
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.show-todo__all-todo {
+	padding-left: 20px;
+	margin-right: 35px;
+}
+
+.show-todo__btn {
+	width: 200px;
+	padding: 10px;
+}
+
+.btn--show-all {
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+.show-todo__input-wrapper {
+	flex-grow: 1;
+	margin-left: 15px;
+}
+
+.show-todo__search-input {
+	width: 100%;
+}
+
+.todo__task {
+	position: relative;
+	border: 3px solid #000;
+	border-radius: 10px;
+	width: 700px;
+	height: 130px;
+	margin: 20px auto 0;
+	background: rgb(221, 219, 219);
+	display: flex;
+	align-items: center;
+	padding: 0px 15px 10px;
+}
+
+.task__close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border: 3px solid #000;
+	border-radius: 10px;
+	background: rgb(25, 233, 205);
+	width: 60px;
+	height: 40px;
+}
+
+.task__close:hover {
+	cursor: pointer;
+	background: rgb(255, 93, 43);
+}
+
+.task__close:active {
+	background: rgb(211, 51, 2);
+}
+
+.task__close-sign {
+	position: absolute;
+	z-index: 2;
+	background: rgb(107, 105, 105);
+	width: 18px;
+	height: 2px;
+	left: 18px;
+}
+
+.close-part-1 {
+	transform: rotate(55deg);
+}
+
+.close-part-2 {
+	transform: rotate(-55deg);
+}
+
+.task--active {
+	background: rgb(139, 139, 139);
+}
+
+.task--checked {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	margin: 0px 10px;
+	width: 35px;
+	height: 35px;
+	opacity: 0;
+}
+
+.task__checkbox {
+	position: relative;
+	border: 3px solid #000;
+	border-radius: 10px;
+	background: rgb(25, 233, 205);
+	width: 60px;
+	height: 40px;
+}
+
+.task__checkbox:hover {
+	border-color: #fff;
+}
+
+.check {
+	position: relative;
+	top: 20px;
+	left: 18px;
+	opacity: 0;
+}
+
+.check-sign {
+	position: absolute;
+	background: rgb(107, 105, 105);
+}
+
+#check-part-1 {
+	width: 8px;
+	height: 2px;
+	transform: rotate(45deg);
+}
+
+#check-part-2 {
+	width: 15px;
+	height: 2px;
+	transform: rotate(-60deg);
+	left: 3px;
+	top: -3px;
+}
+
+.check--active {
+	opacity: 1;
+}
+
+.task__text {
+	background: #fff;
+	padding: 20px 0;
+	border-radius: 5px;
+	margin: 0 15px;
+	flex-grow: 1;
+}
+
+.task__date {
+	background: #fff;
+	padding: 5px 20px;
+	border-radius: 5px;
+	align-self: flex-end;
+}
