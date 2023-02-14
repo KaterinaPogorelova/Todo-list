@@ -35,22 +35,22 @@ showTodo.classList.add('todo__show-todo')
 todo.append(showTodo)
 
 const paragAll = document.createElement('p')
-paragAll.innerHTML = 'All: '
+paragAll.innerText = 'All: '
 paragAll.classList.add('show-todo__all-todo')
 showTodo.append(paragAll)
 
 const allTodo = document.createElement('span')
-allTodo.innerHTML = '2'
+allTodo.innerText = '2'
 allTodo.classList.add('all-todo')
 paragAll.append(allTodo)
 
 const paragCompleted = document.createElement('p')
-paragCompleted.innerHTML = 'Completed: '
+paragCompleted.innerText = 'Completed: '
 paragCompleted.classList.add('show-todo__completed-todo')
 showTodo.append(paragCompleted)
 
 const completedTodo = document.createElement('span')
-completedTodo.innerHTML = '1'
+completedTodo.innerText = '1'
 completedTodo.classList.add('completed-todo')
 paragCompleted.append(completedTodo)
 
@@ -73,6 +73,10 @@ searchInput.type = 'text'
 searchInput.placeholder = 'Search...'
 searchInput.classList.add('input', 'show-todo__search-input')
 showTodoInputWrapper.append(searchInput)
+
+const todoTaskwrapper = document.createElement('div')
+todoTaskwrapper.classList.add('todo__task-wrapper')
+todo.append(todoTaskwrapper)
 
 const todoTask = document.createElement('div')
 todoTask.classList.add('todo__task')
@@ -103,22 +107,69 @@ checkPart2.classList.add('check-sign')
 check.append(checkPart2)
 
 const taskText = document.createElement('p')
-taskText.innerHTML = 'Todo Text'
+taskText.innerText = 'Todo Text'
 taskText.classList.add('task__text')
 todoTask.append(taskText)
 
 const taskDate = document.createElement('p')
-taskDate.innerHTML = 'Date'
+taskDate.innerText = 'Date'
 taskDate.classList.add('task__date')
 todoTask.append(taskDate)
 
-/*taskCheckbox.addEventListener('click', function () {
-	check.classList.toggle('check--active')
-	todoTask.classList.toggle('task--active')
-})*/
-todo.append(todoTask)
-todo.append(todoTask.cloneNode(true))
+todoTaskwrapper.append(todoTask)
 
-check.classList.add('check--active')
-todoTask.classList.add('task--active')
+const task2 = todoTask.cloneNode(true)
+task2.classList.add('task--active')
+const check2 = task2.querySelector('.check')
+check2.classList.add('check--active')
+todoTaskwrapper.prepend(task2)
 
+/*check.classList.add('check--active')
+todoTask.classList.add('task--active')*/
+
+/*Функция для удаления всех тасков */
+btnDeleteAll.addEventListener('click', function () {
+	let alltodoTasks = document.querySelector('.todo__task-wrapper')
+	alltodoTasks.innerHTML = ''
+	allTodo.innerText = '0'
+	completedTodo.innerText = '0'
+})
+/*Функция, генерирующая дату в формате ДД.ММ.ГГГГ*/
+function todoDate() {
+	let date = new Date()
+	let day = String(date.getDate())
+	let month = String(date.getMonth() + 1)
+	let year = date.getFullYear()
+	if (day.length === 1) {
+		day = '0' + day
+	}
+	if (month.length === 1) {
+		month = '0' + month
+	}
+	let fullDate = `${day}.${month}.${year}`
+	return fullDate
+}
+/*Сырая версия добавления тасков */
+btnAdd.addEventListener('click', function () {
+	if (todoHeaderInput.value !== "") {
+		let newTask = todoTask.cloneNode(true)
+		let newTaskText = newTask.querySelector('.task__text')
+		let newTaskDate = newTask.querySelector('.task__date')
+		newTaskText.innerText = todoHeaderInput.value
+		newTaskDate.innerText = todoDate()
+		todoTaskwrapper.prepend(newTask)
+		allTodo.innerText = enlargeCountAllTask(allTodo.innerText)
+	}
+})
+/*Функция для увеличения счётчика всех тасков и сделанных тасков*/
+function enlargeCountAllTask(spanText) {
+	let numText = Number(spanText)
+	numText += 1
+	return String(numText)
+}
+/*Функция для уменьшения счётчика всех тасков и сделанных тасков*/
+function reduceCountAllTask(spanText) {
+	let numText = Number(spanText)
+	numText -= 1
+	return String(numText)
+}
